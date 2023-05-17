@@ -1,7 +1,8 @@
 const app = require("./index");
 const connect = require("./config/db");  //connection from mongoose
+require('dotenv').config();
 
-app.listen(5555, async () => {
+app.listen(process.env.PORT, async () => {
     try {
       await connect();
       console.log("listening on port 5555");
