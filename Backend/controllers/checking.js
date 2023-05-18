@@ -1,7 +1,8 @@
 const userSchema=require("../models/model");
 const express=require("express");
 const router=express.Router();
-const User=require("../models/model.js")
+// const User=require("../models/model.js")
+
 router.post("",async(req,res)=>{
     // console.log(req.body)
     try{
@@ -18,10 +19,11 @@ router.post("",async(req,res)=>{
 router.get("",async(req,res)=>{
     // console.log(req.body)
     try{
-        const data= await User.find().lean().exec()
+        const data= await userSchema.find().lean().exec()
+        console.log(data)
         //if u don't use await postman return => {}(this curly brackets).
         // return res.status(201).send(info);
-        return res.status(201).send(info);
+        return res.status(201).send(data);
     }
     catch(err){
         console.log(err.message);
